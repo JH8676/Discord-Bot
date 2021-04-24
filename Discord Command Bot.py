@@ -5,6 +5,12 @@ from discord.ext import commands
 import os
 import random
 
+def read_token():
+    with open("token.txt", "r") as f:
+        lines = f.readlines()
+        return lines[0].strip()
+
+token = read_token()
 
 client = discord.Client()
 
@@ -33,4 +39,4 @@ async def kill_users(ctx, member: discord.Member):
     await ctx.send(f"Lining {member.mention} up in my sights")
     await member.kick(reason="You got sniped")
 
-bot.run("ODM1NTI5NDE1OTc4MjU0MzY3.YIQxaA.R3gB_dHJLhhGgmnAALVfwEj3iMs")
+bot.run(token)
