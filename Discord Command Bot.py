@@ -17,16 +17,23 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='!')
 
 @bot.command(name='insult', help="Format: <user><amount of times>")
-@commands.has_role("Pog Champ")
+#@commands.has_role("Pog Champ")
 async def insult_user(ctx, member: discord.Member, repeats=1):
     repeats = int(repeats)
 
-    insults = [f"{member.mention} stfu you fat prick", f"{member.mention} your a cunt", f"{member.mention} imagine checking this mention dumbass"]
+    insults = [f"{member.mention} stfu you fat prick", f"{member.mention} you're a cunt", f"{member.mention} imagine checking this mention dumbass"]
 
     response = random.choice(insults)
 
     for x in range(repeats):
         await ctx.send(response)
+
+@bot.command(name='repeat')
+async def repeat_phrase(ctx, phrase, repeats=1):
+    repeats = int(repeats)
+
+    for x in range(repeats):
+        await ctx.send(phrase)
 
 # @bot.event
 # async def on_command_error(ctx, error):
